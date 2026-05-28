@@ -409,3 +409,7 @@ tools:
   power-factor-calculator:
     title: Power Factor Calculator
     description: Calculate real, reactive, and apparent power and power factor for AC circuits.
+
+  trigonometry-calculator:
+    title: Trigonometry Calculator
+    description: Calculate sin, cos, tan, inverse trig functions, and Pythagorean theorem in degrees or radians.

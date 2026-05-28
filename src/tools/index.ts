@@ -91,6 +91,7 @@ import { tool as hamRadioCalculators } from './ham-radio-calculators';
 import { tool as bitwiseCalculator } from './bitwise-calculator';
 import { tool as ohmsLawCalculator } from './ohms-law-calculator';
 import { tool as powerFactorCalculator } from './power-factor-calculator';
+import { tool as trigonometryCalculator } from './trigonometry-calculator';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -172,7 +173,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Math',
-    components: [mathEvaluator, etaCalculator, percentageCalculator, bitwiseCalculator, ohmsLawCalculator, powerFactorCalculator],
+    components: [mathEvaluator, etaCalculator, percentageCalculator, bitwiseCalculator, ohmsLawCalculator, powerFactorCalculator, trigonometryCalculator],
   },
   {
     name: 'Measurement',
