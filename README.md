@@ -92,6 +92,19 @@ pnpm run script:create:tool my-tool-name
 
 It will create a directory in `src/tools` with the correct files, and the import in `src/tools/index.ts`. You will just need to add the imported tool in the proper category and develop the tool.
 
+## Docker
+
+Pre-built images are published to GHCR:
+
+```sh
+docker pull ghcr.io/kevinpinscoe/eng-tools:latest
+docker run -p 8080:80 ghcr.io/kevinpinscoe/eng-tools:latest
+```
+
+The container listens on **port 80**. Map it to any host port you like (`-p <host>:80`).
+
+Available tags: `latest` (nightly), semver releases (`v1.2.3`, `1.2`, `1`).
+
 ## Repository Layout
 
 ```
