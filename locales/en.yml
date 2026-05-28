@@ -413,3 +413,7 @@ tools:
   trigonometry-calculator:
     title: Trigonometry Calculator
     description: Calculate sin, cos, tan, inverse trig functions, and Pythagorean theorem in degrees or radians.
+
+  electrical-power-calculator:
+    title: Electrical Power Calculator
+    description: Calculate electrical power, voltage, current, and resistance using all standard power formulas (P=VI, P=V²/R, P=I²R).
