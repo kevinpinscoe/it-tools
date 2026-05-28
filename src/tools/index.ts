@@ -88,6 +88,7 @@ import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
 import { tool as yamlViewer } from './yaml-viewer';
 import { tool as hamRadioCalculators } from './ham-radio-calculators';
+import { tool as bitwiseCalculator } from './bitwise-calculator';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -169,7 +170,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Math',
-    components: [mathEvaluator, etaCalculator, percentageCalculator],
+    components: [mathEvaluator, etaCalculator, percentageCalculator, bitwiseCalculator],
   },
   {
     name: 'Measurement',

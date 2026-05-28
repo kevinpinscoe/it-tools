@@ -397,3 +397,7 @@ tools:
   ham-radio-calculators:
     title: Ham Radio Calculators
     description: A collection of ham radio calculators for antenna, frequency, and RF calculations.
+
+  bitwise-calculator:
+    title: Bitwise Calculator
+    description: Perform bitwise operations — AND, OR, XOR, NOT, and bit shifts on binary values.
