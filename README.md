@@ -1,44 +1,36 @@
-<picture>
-    <source srcset="./.github/logo-dark.png" media="(prefers-color-scheme: light)">
-    <source srcset="./.github/logo-white.png" media="(prefers-color-scheme: dark)">
-    <img src="./.github/logo-dark.png" alt="logo">
-</picture>
+# IT Tools — Specialized Fork
 
-<p align="center">
-Useful tools for developer and people working in IT. <a href="https://it-tools.tech">Try it!</a>
-</p>
+This repository is a downstream fork of [`CorentinTh/it-tools`](https://github.com/CorentinTh/it-tools).
 
-## Functionalities and roadmap
+The original project, **IT Tools**, is a collection of useful browser-based tools for developers and people working in IT. The original project, design, structure, application framework, and broad tool concept belong to the upstream project and its contributors.
 
-Please check the [issues](https://github.com/CorentinTh/it-tools/issues) to see if some feature listed to be implemented.
+## Purpose of this fork
 
-You have an idea of a tool? Submit a [feature request](https://github.com/CorentinTh/it-tools/issues/new/choose)!
+This fork exists because I like the structure, user experience, and tool format of IT Tools, but I want to add utilities that are more specialized than the general-purpose tools normally expected in the upstream project.
 
-## Self host
+The tools added here may be useful to a smaller subset of users, such as people with specific infrastructure, operations, homelab, documentation, or workflow needs. They are not necessarily intended to be broadly useful to the wider IT Tools community.
 
-Self host solutions for your homelab
+For that reason, I do not intend to submit every tool added here back to the upstream project. This fork should be treated as a separate, opinionated variant rather than a staging area for upstream contributions.
 
-**From docker hub:**
+## Relationship to upstream
 
-```sh
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 corentinth/it-tools:latest
-```
+Primary credit goes to the upstream project:
 
-**From github packages:**
+* Upstream repository: [`CorentinTh/it-tools`](https://github.com/CorentinTh/it-tools)
+* Original author: Corentin Thomasset
+* Original project website: [`it-tools.tech`](https://it-tools.tech)
 
-```sh
-docker run -d --name it-tools --restart unless-stopped -p 8080:80 ghcr.io/corentinth/it-tools:latest
-```
+This fork may periodically pull changes from upstream when practical, but it should not be assumed to match upstream behavior, upstream releases, or upstream deployment artifacts.
 
-**Other solutions:**
+## Contributing
 
-- [Cloudron](https://www.cloudron.io/store/tech.ittools.cloudron.html)
-- [Tipi](https://www.runtipi.io/docs/apps-available)
-- [Unraid](https://unraid.net/community/apps?q=it-tools)
+Issues and pull requests in this repository should relate to this fork's specialized purpose.
 
-## Contribute
+For general IT Tools bugs, feature requests, or broadly useful tools, consider contributing directly to the upstream project instead:
 
-### Recommended IDE Setup
+https://github.com/CorentinTh/it-tools
+
+## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) with the following extensions:
 
@@ -60,18 +52,7 @@ with the following settings:
 }
 ```
 
-### Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-### Project Setup
+## Project Setup
 
 ```sh
 pnpm install
@@ -103,31 +84,48 @@ pnpm lint
 
 ### Create a new tool
 
-To create a new tool, there is a script that generate the boilerplate of the new tool, simply run:
+To create a new tool, there is a script that generates the boilerplate of the new tool, simply run:
 
 ```sh
 pnpm run script:create:tool my-tool-name
 ```
 
-It will create a directory in `src/tools` with the correct files, and a the import in `src/tools/index.ts`. You will just need to add the imported tool in the proper category and develop the tool.
+It will create a directory in `src/tools` with the correct files, and the import in `src/tools/index.ts`. You will just need to add the imported tool in the proper category and develop the tool.
 
-## Contributors
+## Repository Layout
 
-Big thanks to all the people who have already contributed!
-
-[![contributors](https://contrib.rocks/image?repo=corentinth/it-tools&refresh=1)](https://github.com/corentinth/it-tools/graphs/contributors)
-
-## Credits
-
-Coded with ❤️ by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=readme).
-
-This project is continuously deployed using [vercel.com](https://vercel.com).
-
-Contributor graph is generated using [contrib.rocks](https://contrib.rocks/preview?repo=corentinth/it-tools).
-
-<a href="https://www.producthunt.com/posts/it-tools?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-it&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=345793&theme=light" alt="IT&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-<a href="https://www.producthunt.com/posts/it-tools?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-it&#0045;tools" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=345793&theme=light&period=daily" alt="IT&#0032;Tools - Collection&#0032;of&#0032;handy&#0032;online&#0032;tools&#0032;for&#0032;devs&#0044;&#0032;with&#0032;great&#0032;UX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+```
+it-tools/
+├── .github/
+│   └── workflows/        # ci, e2e-tests, docker nightly/release, releases
+├── _templates/           # Hygen code generation templates (new tool boilerplate)
+├── locales/              # i18n translation files (en, de, es, fr, pt, zh, …)
+├── public/               # Static assets served as-is (icons, robots.txt)
+├── scripts/              # Build and release helper scripts
+├── src/
+│   ├── components/       # Shared Vue components
+│   ├── composable/       # Vue composables
+│   ├── modules/          # App-level modules (command palette, etc.)
+│   ├── pages/            # Route-level pages
+│   ├── stores/           # Pinia stores
+│   ├── tools/            # Individual tool implementations (one dir per tool)
+│   └── ui/               # UI component library
+├── Dockerfile            # Container image build
+├── nginx.conf            # nginx config used inside the Docker image
+├── package.json
+├── playwright.config.ts  # E2E test configuration
+├── vite.config.ts        # Build configuration
+└── unocss.config.ts      # UnoCSS (utility CSS) configuration
+```
 
 ## License
 
-This project is under the [GNU GPLv3](LICENSE).
+This fork remains licensed under the GNU GPLv3, consistent with the upstream project.
+
+See [`LICENSE`](LICENSE).
+
+## Modification notice
+
+This repository is a modified downstream fork of `CorentinTh/it-tools`.
+
+Modifications in this fork are maintained by Kevin Inscoe and are intended for specialized tools and workflows that may not fit the upstream project's general-purpose scope.
