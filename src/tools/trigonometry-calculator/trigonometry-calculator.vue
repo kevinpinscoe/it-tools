@@ -12,8 +12,10 @@ function fromRad(val: number, unit: AngleUnit) {
 }
 
 function fmt(val: number): string {
-  if (!Number.isFinite(val) || Number.isNaN(val)) return '';
-  return parseFloat(val.toPrecision(10)).toString();
+  if (!Number.isFinite(val) || Number.isNaN(val)) {
+    return '';
+  }
+  return Number.parseFloat(val.toPrecision(10)).toString();
 }
 
 // --- Basic trig ---
@@ -22,7 +24,9 @@ const angle = ref<number | undefined>(undefined);
 const sinResult = computed(() => angle.value === undefined ? '' : fmt(Math.sin(toRad(angle.value, angleUnit.value))));
 const cosResult = computed(() => angle.value === undefined ? '' : fmt(Math.cos(toRad(angle.value, angleUnit.value))));
 const tanResult = computed(() => {
-  if (angle.value === undefined) return '';
+  if (angle.value === undefined) {
+    return '';
+  }
   const v = Math.tan(toRad(angle.value, angleUnit.value));
   return Number.isFinite(v) ? fmt(v) : 'undefined';
 });
@@ -33,19 +37,29 @@ const arccosInput = ref<number | undefined>(undefined);
 const arctanInput = ref<number | undefined>(undefined);
 
 const arcsinResult = computed(() => {
-  if (arcsinInput.value === undefined) return '';
-  if (arcsinInput.value < -1 || arcsinInput.value > 1) return 'out of range';
+  if (arcsinInput.value === undefined) {
+    return '';
+  }
+  if (arcsinInput.value < -1 || arcsinInput.value > 1) {
+    return 'out of range';
+  }
   return fmt(fromRad(Math.asin(arcsinInput.value), angleUnit.value));
 });
 
 const arccosResult = computed(() => {
-  if (arccosInput.value === undefined) return '';
-  if (arccosInput.value < -1 || arccosInput.value > 1) return 'out of range';
+  if (arccosInput.value === undefined) {
+    return '';
+  }
+  if (arccosInput.value < -1 || arccosInput.value > 1) {
+    return 'out of range';
+  }
   return fmt(fromRad(Math.acos(arccosInput.value), angleUnit.value));
 });
 
 const arctanResult = computed(() => {
-  if (arctanInput.value === undefined) return '';
+  if (arctanInput.value === undefined) {
+    return '';
+  }
   return fmt(fromRad(Math.atan(arctanInput.value), angleUnit.value));
 });
 
@@ -53,14 +67,18 @@ const arctanResult = computed(() => {
 const pyA = ref<number | undefined>(undefined);
 const pyB = ref<number | undefined>(undefined);
 const pyHyp = computed(() => {
-  if (pyA.value === undefined || pyB.value === undefined) return '';
+  if (pyA.value === undefined || pyB.value === undefined) {
+    return '';
+  }
   return fmt(Math.sqrt(pyA.value ** 2 + pyB.value ** 2));
 });
 
 const pyC = ref<number | undefined>(undefined);
 const pyKnown = ref<number | undefined>(undefined);
 const pyMissing = computed(() => {
-  if (pyC.value === undefined || pyKnown.value === undefined) return '';
+  if (pyC.value === undefined || pyKnown.value === undefined) {
+    return '';
+  }
   const val = pyC.value ** 2 - pyKnown.value ** 2;
   return val < 0 ? 'invalid' : fmt(Math.sqrt(val));
 });

@@ -13,27 +13,39 @@ watch(solveFor, () => {
 const config: Record<SolveFor, { label1: string; unit1: string; label2: string; unit2: string; formula: string }> = {
   V: { label1: 'Current (I)', unit1: 'A', label2: 'Resistance (R)', unit2: 'Ω', formula: 'V = I × R' },
   I: { label1: 'Voltage (V)', unit1: 'V', label2: 'Resistance (R)', unit2: 'Ω', formula: 'I = V ÷ R' },
-  R: { label1: 'Voltage (V)', unit1: 'V', label2: 'Current (I)',    unit2: 'A', formula: 'R = V ÷ I' },
-  P: { label1: 'Voltage (V)', unit1: 'V', label2: 'Current (I)',    unit2: 'A', formula: 'P = V × I' },
+  R: { label1: 'Voltage (V)', unit1: 'V', label2: 'Current (I)', unit2: 'A', formula: 'R = V ÷ I' },
+  P: { label1: 'Voltage (V)', unit1: 'V', label2: 'Current (I)', unit2: 'A', formula: 'P = V × I' },
 };
 
 function fmt(val: number): string {
-  if (!Number.isFinite(val) || Number.isNaN(val) || val < 0) return '—';
-  return parseFloat(val.toPrecision(8)).toString();
+  if (!Number.isFinite(val) || Number.isNaN(val) || val < 0) {
+    return '—';
+  }
+  return Number.parseFloat(val.toPrecision(8)).toString();
 }
 
 const results = computed(() => {
   const a = input1.value;
   const b = input2.value;
-  if (a === undefined || b === undefined) return null;
+  if (a === undefined || b === undefined) {
+    return null;
+  }
 
   let V: number, I: number, R: number, P: number;
 
   switch (solveFor.value) {
-    case 'V': I = a; R = b; V = I * R;  P = V * I; break;
-    case 'I': V = a; R = b; I = V / R;  P = V * I; break;
-    case 'R': V = a; I = b; R = V / I;  P = V * I; break;
-    case 'P': V = a; I = b; P = V * I;  R = V / I; break;
+    case 'V':
+      I = a; R = b; V = I * R; P = V * I;
+      break;
+    case 'I':
+      V = a; R = b; I = V / R; P = V * I;
+      break;
+    case 'R':
+      V = a; I = b; R = V / I; P = V * I;
+      break;
+    case 'P':
+      V = a; I = b; P = V * I; R = V / I;
+      break;
   }
 
   return { V: fmt(V!), I: fmt(I!), R: fmt(R!), P: fmt(P!) };
