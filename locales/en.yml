@@ -70,6 +70,7 @@ tools:
     measurement: Measurement
     text: Text
     data: Data
+    ham radio: Ham Radio
 
   password-strength-analyser:
     title: Password strength analyser
@@ -392,3 +393,7 @@ tools:
   text-to-binary:
     title: Text to ASCII binary
     description: Convert text to its ASCII binary representation and vice-versa.
+
+  ham-radio-calculators:
+    title: Ham Radio Calculators
+    description: A collection of ham radio calculators for antenna, frequency, and RF calculations.
