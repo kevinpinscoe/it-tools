@@ -200,13 +200,17 @@ const tools = computed<ToolCategory[]>(() => [
     .title {
       font-size: 25px;
       font-weight: 600;
+      background-color: #c8966c;
+      border-radius: 4px;
+      padding: 2px 10px;
+      display: inline-block;
     }
 
     .divider {
       width: 50px;
       height: 2px;
       border-radius: 4px;
-      background-color: v-bind('themeVars.primaryColor');
+      background-color: #7b4f2e;
       margin: 0 auto 5px;
     }
 
