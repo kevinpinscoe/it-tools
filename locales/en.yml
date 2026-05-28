@@ -405,3 +405,7 @@ tools:
   ohms-law-calculator:
     title: Ohm's Law Calculator
     description: Calculate voltage, current, resistance, and power using Ohm's Law.
+
+  power-factor-calculator:
+    title: Power Factor Calculator
+    description: Calculate real, reactive, and apparent power and power factor for AC circuits.
