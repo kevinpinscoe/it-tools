@@ -39,32 +39,36 @@ const results = computed(() => {
     return null;
   }
 
-  let P: number, S: number, Q: number, PF: number, theta: number;
+  let P: number, S: number, Q: number, PF: number;
 
   switch (solveFor.value) {
     case 'PF':
-      P = a; S = b;
+      P = a;
+      S = b;
       PF = P / S;
       Q = Math.sqrt(Math.max(0, S ** 2 - P ** 2));
       break;
     case 'P':
-      S = a; PF = b;
+      S = a;
+      PF = b;
       P = S * PF;
       Q = Math.sqrt(Math.max(0, S ** 2 - P ** 2));
       break;
     case 'S':
-      P = a; PF = b;
+      P = a;
+      PF = b;
       S = P / PF;
       Q = Math.sqrt(Math.max(0, S ** 2 - P ** 2));
       break;
     case 'Q':
-      P = a; S = b;
+      P = a;
+      S = b;
       Q = Math.sqrt(Math.max(0, S ** 2 - P ** 2));
       PF = P / S;
       break;
   }
 
-  theta = (Math.acos(PF!) * 180) / Math.PI;
+  const theta = (Math.acos(PF!) * 180) / Math.PI;
 
   return {
     PF: fmt(PF!),
@@ -81,14 +85,21 @@ const current = computed(() => config[solveFor.value]);
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 560px">
-
       <c-card mb-3 title="Solve For">
         <n-radio-group v-model:value="solveFor">
           <n-space>
-            <n-radio value="PF">Power Factor</n-radio>
-            <n-radio value="P">Real Power (kW)</n-radio>
-            <n-radio value="S">Apparent Power (kVA)</n-radio>
-            <n-radio value="Q">Reactive Power (kVAR)</n-radio>
+            <n-radio value="PF">
+              Power Factor
+            </n-radio>
+            <n-radio value="P">
+              Real Power (kW)
+            </n-radio>
+            <n-radio value="S">
+              Apparent Power (kVA)
+            </n-radio>
+            <n-radio value="Q">
+              Reactive Power (kVAR)
+            </n-radio>
           </n-space>
         </n-radio-group>
         <div mt-2 op-60 style="font-size: 0.85em; font-style: italic;">
@@ -97,12 +108,12 @@ const current = computed(() => config[solveFor.value]);
       </c-card>
 
       <c-card mb-3 title="Inputs">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 180px;">{{ current.label1 }}</span>
           <n-input-number v-model:value="input1" :min="0" placeholder="Enter value" style="max-width: 160px;" />
           <span op-70>{{ current.unit1 }}</span>
         </div>
-        <div flex gap-3 items-center>
+        <div flex items-center gap-3>
           <span style="min-width: 180px;">{{ current.label2 }}</span>
           <n-input-number
             v-model:value="input2"
@@ -116,27 +127,27 @@ const current = computed(() => config[solveFor.value]);
       </c-card>
 
       <c-card v-if="results" title="Results">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 180px;">Power Factor (PF)</span>
           <input-copyable :value="results.PF" readonly style="max-width: 160px;" />
           <span op-70>ratio (0–1)</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 180px;">Phase Angle (θ)</span>
           <input-copyable :value="results.theta" readonly style="max-width: 160px;" />
           <span op-70>°</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 180px;">Real Power (P)</span>
           <input-copyable :value="results.P" readonly style="max-width: 160px;" />
           <span op-70>kW</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 180px;">Apparent Power (S)</span>
           <input-copyable :value="results.S" readonly style="max-width: 160px;" />
           <span op-70>kVA</span>
         </div>
-        <div flex gap-3 items-center>
+        <div flex items-center gap-3>
           <span style="min-width: 180px;">Reactive Power (Q)</span>
           <input-copyable :value="results.Q" readonly style="max-width: 160px;" />
           <span op-70>kVAR</span>
@@ -144,9 +155,10 @@ const current = computed(() => config[solveFor.value]);
       </c-card>
 
       <c-card v-else>
-        <n-text op-60>Enter both values above to calculate.</n-text>
+        <n-text op-60>
+          Enter both values above to calculate.
+        </n-text>
       </c-card>
-
     </div>
   </div>
 </template>

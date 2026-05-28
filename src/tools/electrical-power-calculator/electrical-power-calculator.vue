@@ -144,14 +144,21 @@ const results = computed(() => {
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 580px">
-
       <c-card mb-3 title="Solve For">
         <n-radio-group v-model:value="solveFor">
           <n-space>
-            <n-radio value="P">Power (W)</n-radio>
-            <n-radio value="V">Voltage (V)</n-radio>
-            <n-radio value="I">Current (A)</n-radio>
-            <n-radio value="R">Resistance (Ω)</n-radio>
+            <n-radio value="P">
+              Power (W)
+            </n-radio>
+            <n-radio value="V">
+              Voltage (V)
+            </n-radio>
+            <n-radio value="I">
+              Current (A)
+            </n-radio>
+            <n-radio value="R">
+              Resistance (Ω)
+            </n-radio>
           </n-space>
         </n-radio-group>
       </c-card>
@@ -172,7 +179,7 @@ const results = computed(() => {
       </c-card>
 
       <c-card mb-3 title="Inputs">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 160px;">{{ currentFormula.input1.label }}</span>
           <n-input-number
             v-model:value="input1"
@@ -182,7 +189,7 @@ const results = computed(() => {
           />
           <span op-70>{{ currentFormula.input1.unit }}</span>
         </div>
-        <div flex gap-3 items-center>
+        <div flex items-center gap-3>
           <span style="min-width: 160px;">{{ currentFormula.input2.label }}</span>
           <n-input-number
             v-model:value="input2"
@@ -195,22 +202,22 @@ const results = computed(() => {
       </c-card>
 
       <c-card v-if="results" title="Results">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 160px;">Power (P)</span>
           <input-copyable :value="results.P" readonly style="max-width: 180px;" />
           <span op-70>W</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 160px;">Voltage (V)</span>
           <input-copyable :value="results.V" readonly style="max-width: 180px;" />
           <span op-70>V</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 160px;">Current (I)</span>
           <input-copyable :value="results.I" readonly style="max-width: 180px;" />
           <span op-70>A</span>
         </div>
-        <div flex gap-3 items-center>
+        <div flex items-center gap-3>
           <span style="min-width: 160px;">Resistance (R)</span>
           <input-copyable :value="results.R" readonly style="max-width: 180px;" />
           <span op-70>Ω</span>
@@ -222,7 +229,6 @@ const results = computed(() => {
           Enter both values above to calculate.
         </n-text>
       </c-card>
-
     </div>
   </div>
 </template>

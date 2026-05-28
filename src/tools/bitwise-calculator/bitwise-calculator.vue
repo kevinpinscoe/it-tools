@@ -98,7 +98,6 @@ const result = computed(() => {
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 600px">
-
       <c-card mb-3 title="Operation">
         <n-radio-group v-model:value="operation">
           <n-space wrap>
@@ -114,7 +113,7 @@ const result = computed(() => {
       </c-card>
 
       <c-card mb-3 title="Inputs">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 130px;">Number 1</span>
           <n-input-number
             v-model:value="num1"
@@ -123,7 +122,7 @@ const result = computed(() => {
             style="max-width: 200px;"
           />
         </div>
-        <div v-if="!currentOp.unary" flex gap-3 items-center>
+        <div v-if="!currentOp.unary" flex items-center gap-3>
           <span style="min-width: 130px;">{{ currentOp.input2Label }}</span>
           <n-input-number
             v-model:value="num2"
@@ -147,7 +146,9 @@ const result = computed(() => {
           </thead>
           <tbody>
             <tr>
-              <td op-70>Number 1</td>
+              <td op-70>
+                Number 1
+              </td>
               <td>
                 <input-copyable :value="String(Math.trunc(num1!))" readonly />
               </td>
@@ -159,7 +160,9 @@ const result = computed(() => {
               </td>
             </tr>
             <tr v-if="!currentOp.unary">
-              <td op-70>{{ currentOp.input2Label }}</td>
+              <td op-70>
+                {{ currentOp.input2Label }}
+              </td>
               <td>
                 <input-copyable :value="String(Math.trunc(num2!))" readonly />
               </td>
@@ -193,7 +196,6 @@ const result = computed(() => {
           Enter {{ currentOp.unary ? 'a number' : 'both values' }} above to calculate.
         </n-text>
       </c-card>
-
     </div>
   </div>
 </template>

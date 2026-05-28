@@ -62,19 +62,22 @@ const frequencyResult = computed(() => {
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 560px">
-
       <c-card mb-3 title="Direction">
         <n-radio-group v-model:value="mode">
           <n-space>
-            <n-radio value="freqToWave">Frequency → Wavelength</n-radio>
-            <n-radio value="waveToFreq">Wavelength → Frequency</n-radio>
+            <n-radio value="freqToWave">
+              Frequency → Wavelength
+            </n-radio>
+            <n-radio value="waveToFreq">
+              Wavelength → Frequency
+            </n-radio>
           </n-space>
         </n-radio-group>
       </c-card>
 
       <template v-if="mode === 'freqToWave'">
         <c-card mb-3 title="Input Frequency">
-          <div flex gap-3 items-center>
+          <div flex items-center gap-3>
             <n-input-number
               v-model:value="freqValue"
               :min="0"
@@ -83,10 +86,18 @@ const frequencyResult = computed(() => {
             />
             <n-radio-group v-model:value="freqUnit">
               <n-space>
-                <n-radio value="Hz">Hz</n-radio>
-                <n-radio value="kHz">kHz</n-radio>
-                <n-radio value="MHz">MHz</n-radio>
-                <n-radio value="GHz">GHz</n-radio>
+                <n-radio value="Hz">
+                  Hz
+                </n-radio>
+                <n-radio value="kHz">
+                  kHz
+                </n-radio>
+                <n-radio value="MHz">
+                  MHz
+                </n-radio>
+                <n-radio value="GHz">
+                  GHz
+                </n-radio>
               </n-space>
             </n-radio-group>
           </div>
@@ -95,29 +106,41 @@ const frequencyResult = computed(() => {
         <c-card mb-3 title="Output Unit">
           <n-radio-group v-model:value="resultWaveUnit">
             <n-space>
-              <n-radio value="m">m</n-radio>
-              <n-radio value="cm">cm</n-radio>
-              <n-radio value="mm">mm</n-radio>
-              <n-radio value="ft">ft</n-radio>
-              <n-radio value="in">in</n-radio>
+              <n-radio value="m">
+                m
+              </n-radio>
+              <n-radio value="cm">
+                cm
+              </n-radio>
+              <n-radio value="mm">
+                mm
+              </n-radio>
+              <n-radio value="ft">
+                ft
+              </n-radio>
+              <n-radio value="in">
+                in
+              </n-radio>
             </n-space>
           </n-radio-group>
         </c-card>
 
         <c-card v-if="wavelengthResult !== '—'" title="Wavelength">
-          <div flex gap-3 items-center>
+          <div flex items-center gap-3>
             <input-copyable :value="wavelengthResult" readonly style="max-width: 200px;" />
             <span op-70>{{ resultWaveUnit }}</span>
           </div>
         </c-card>
         <c-card v-else>
-          <n-text op-60>Enter a frequency above to calculate wavelength.</n-text>
+          <n-text op-60>
+            Enter a frequency above to calculate wavelength.
+          </n-text>
         </c-card>
       </template>
 
       <template v-else>
         <c-card mb-3 title="Input Wavelength">
-          <div flex gap-3 items-center>
+          <div flex items-center gap-3>
             <n-input-number
               v-model:value="waveValue"
               :min="0"
@@ -126,11 +149,21 @@ const frequencyResult = computed(() => {
             />
             <n-radio-group v-model:value="waveUnit">
               <n-space>
-                <n-radio value="m">m</n-radio>
-                <n-radio value="cm">cm</n-radio>
-                <n-radio value="mm">mm</n-radio>
-                <n-radio value="ft">ft</n-radio>
-                <n-radio value="in">in</n-radio>
+                <n-radio value="m">
+                  m
+                </n-radio>
+                <n-radio value="cm">
+                  cm
+                </n-radio>
+                <n-radio value="mm">
+                  mm
+                </n-radio>
+                <n-radio value="ft">
+                  ft
+                </n-radio>
+                <n-radio value="in">
+                  in
+                </n-radio>
               </n-space>
             </n-radio-group>
           </div>
@@ -139,25 +172,34 @@ const frequencyResult = computed(() => {
         <c-card mb-3 title="Output Unit">
           <n-radio-group v-model:value="resultFreqUnit">
             <n-space>
-              <n-radio value="Hz">Hz</n-radio>
-              <n-radio value="kHz">kHz</n-radio>
-              <n-radio value="MHz">MHz</n-radio>
-              <n-radio value="GHz">GHz</n-radio>
+              <n-radio value="Hz">
+                Hz
+              </n-radio>
+              <n-radio value="kHz">
+                kHz
+              </n-radio>
+              <n-radio value="MHz">
+                MHz
+              </n-radio>
+              <n-radio value="GHz">
+                GHz
+              </n-radio>
             </n-space>
           </n-radio-group>
         </c-card>
 
         <c-card v-if="frequencyResult !== '—'" title="Frequency">
-          <div flex gap-3 items-center>
+          <div flex items-center gap-3>
             <input-copyable :value="frequencyResult" readonly style="max-width: 200px;" />
             <span op-70>{{ resultFreqUnit }}</span>
           </div>
         </c-card>
         <c-card v-else>
-          <n-text op-60>Enter a wavelength above to calculate frequency.</n-text>
+          <n-text op-60>
+            Enter a wavelength above to calculate frequency.
+          </n-text>
         </c-card>
       </template>
-
     </div>
   </div>
 </template>

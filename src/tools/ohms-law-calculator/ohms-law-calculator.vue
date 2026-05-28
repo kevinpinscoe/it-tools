@@ -35,16 +35,28 @@ const results = computed(() => {
 
   switch (solveFor.value) {
     case 'V':
-      I = a; R = b; V = I * R; P = V * I;
+      I = a;
+      R = b;
+      V = I * R;
+      P = V * I;
       break;
     case 'I':
-      V = a; R = b; I = V / R; P = V * I;
+      V = a;
+      R = b;
+      I = V / R;
+      P = V * I;
       break;
     case 'R':
-      V = a; I = b; R = V / I; P = V * I;
+      V = a;
+      I = b;
+      R = V / I;
+      P = V * I;
       break;
     case 'P':
-      V = a; I = b; P = V * I; R = V / I;
+      V = a;
+      I = b;
+      P = V * I;
+      R = V / I;
       break;
   }
 
@@ -57,14 +69,21 @@ const current = computed(() => config[solveFor.value]);
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 560px">
-
       <c-card mb-3 title="Solve For">
         <n-radio-group v-model:value="solveFor">
           <n-space>
-            <n-radio value="V">Voltage (V)</n-radio>
-            <n-radio value="I">Current (I)</n-radio>
-            <n-radio value="R">Resistance (R)</n-radio>
-            <n-radio value="P">Power (P)</n-radio>
+            <n-radio value="V">
+              Voltage (V)
+            </n-radio>
+            <n-radio value="I">
+              Current (I)
+            </n-radio>
+            <n-radio value="R">
+              Resistance (R)
+            </n-radio>
+            <n-radio value="P">
+              Power (P)
+            </n-radio>
           </n-space>
         </n-radio-group>
         <div mt-2 op-60 style="font-size: 0.85em; font-style: italic;">
@@ -73,12 +92,12 @@ const current = computed(() => config[solveFor.value]);
       </c-card>
 
       <c-card mb-3 title="Inputs">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 140px;">{{ current.label1 }}</span>
           <n-input-number v-model:value="input1" :min="0" placeholder="Enter value" style="max-width: 180px;" />
           <span op-70>{{ current.unit1 }}</span>
         </div>
-        <div flex gap-3 items-center>
+        <div flex items-center gap-3>
           <span style="min-width: 140px;">{{ current.label2 }}</span>
           <n-input-number v-model:value="input2" :min="0" placeholder="Enter value" style="max-width: 180px;" />
           <span op-70>{{ current.unit2 }}</span>
@@ -86,22 +105,22 @@ const current = computed(() => config[solveFor.value]);
       </c-card>
 
       <c-card v-if="results" title="Results">
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 140px;">Voltage (V)</span>
           <input-copyable :value="results.V" readonly style="max-width: 180px;" />
           <span op-70>V</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 140px;">Current (I)</span>
           <input-copyable :value="results.I" readonly style="max-width: 180px;" />
           <span op-70>A</span>
         </div>
-        <div flex gap-3 items-center mb-3>
+        <div mb-3 flex items-center gap-3>
           <span style="min-width: 140px;">Resistance (R)</span>
           <input-copyable :value="results.R" readonly style="max-width: 180px;" />
           <span op-70>Ω</span>
         </div>
-        <div flex gap-3 items-center>
+        <div flex items-center gap-3>
           <span style="min-width: 140px;">Power (P)</span>
           <input-copyable :value="results.P" readonly style="max-width: 180px;" />
           <span op-70>W</span>
@@ -109,9 +128,10 @@ const current = computed(() => config[solveFor.value]);
       </c-card>
 
       <c-card v-else>
-        <n-text op-60>Enter both values above to calculate.</n-text>
+        <n-text op-60>
+          Enter both values above to calculate.
+        </n-text>
       </c-card>
-
     </div>
   </div>
 </template>
