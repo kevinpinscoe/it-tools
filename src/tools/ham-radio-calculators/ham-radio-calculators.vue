@@ -12,7 +12,9 @@ onMounted(() => {
   <c-card>
     <n-space vertical align="center" :size="16">
       <n-text>Redirecting to Ham Radio Calculators…</n-text>
-      <n-a :href="url">Click here if not redirected automatically</n-a>
+      <n-a :href="url">
+        Click here if not redirected automatically
+      </n-a>
     </n-space>
   </c-card>
 </template>

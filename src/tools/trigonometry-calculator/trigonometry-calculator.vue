@@ -87,50 +87,53 @@ const pyMissing = computed(() => {
 <template>
   <div style="flex: 0 0 100%">
     <div style="margin: 0 auto; max-width: 640px">
-
       <c-card mb-3>
         <div flex items-center gap-3>
           <span>Angle unit:</span>
           <n-radio-group v-model:value="angleUnit">
-            <n-radio value="deg">Degrees</n-radio>
-            <n-radio value="rad">Radians</n-radio>
+            <n-radio value="deg">
+              Degrees
+            </n-radio>
+            <n-radio value="rad">
+              Radians
+            </n-radio>
           </n-radio-group>
         </div>
       </c-card>
 
       <c-card mb-3 title="Sin / Cos / Tan">
-        <div flex gap-2 items-center mb-2>
+        <div mb-2 flex items-center gap-2>
           <span style="min-width: 80px;">Angle</span>
           <n-input-number v-model:value="angle" placeholder="Angle" style="max-width: 180px;" />
         </div>
-        <div flex gap-2 items-center mb-2>
+        <div mb-2 flex items-center gap-2>
           <span style="min-width: 80px;">sin</span>
           <input-copyable :value="sinResult" readonly placeholder="—" style="max-width: 220px;" />
         </div>
-        <div flex gap-2 items-center mb-2>
+        <div mb-2 flex items-center gap-2>
           <span style="min-width: 80px;">cos</span>
           <input-copyable :value="cosResult" readonly placeholder="—" style="max-width: 220px;" />
         </div>
-        <div flex gap-2 items-center>
+        <div flex items-center gap-2>
           <span style="min-width: 80px;">tan</span>
           <input-copyable :value="tanResult" readonly placeholder="—" style="max-width: 220px;" />
         </div>
       </c-card>
 
       <c-card mb-3 title="Inverse Trig (arc functions)">
-        <div flex gap-2 items-center mb-2>
+        <div mb-2 flex items-center gap-2>
           <span style="min-width: 80px;">arcsin</span>
           <n-input-number v-model:value="arcsinInput" :min="-1" :max="1" placeholder="Value (−1 to 1)" style="max-width: 180px;" />
           <span style="min-width: 10px;">=</span>
           <input-copyable :value="arcsinResult" readonly placeholder="—" style="max-width: 180px;" />
         </div>
-        <div flex gap-2 items-center mb-2>
+        <div mb-2 flex items-center gap-2>
           <span style="min-width: 80px;">arccos</span>
           <n-input-number v-model:value="arccosInput" :min="-1" :max="1" placeholder="Value (−1 to 1)" style="max-width: 180px;" />
           <span style="min-width: 10px;">=</span>
           <input-copyable :value="arccosResult" readonly placeholder="—" style="max-width: 180px;" />
         </div>
-        <div flex gap-2 items-center>
+        <div flex items-center gap-2>
           <span style="min-width: 80px;">arctan</span>
           <n-input-number v-model:value="arctanInput" placeholder="Value" style="max-width: 180px;" />
           <span style="min-width: 10px;">=</span>
@@ -143,7 +146,7 @@ const pyMissing = computed(() => {
           <div mb-1 op-70>
             Find hypotenuse (c) from sides a and b
           </div>
-          <div flex gap-2 items-center>
+          <div flex items-center gap-2>
             <n-input-number v-model:value="pyA" placeholder="Side a" style="max-width: 160px;" />
             <span op-60>² + </span>
             <n-input-number v-model:value="pyB" placeholder="Side b" style="max-width: 160px;" />
@@ -155,7 +158,7 @@ const pyMissing = computed(() => {
           <div mb-1 op-70>
             Find missing side from hypotenuse (c) and one side
           </div>
-          <div flex gap-2 items-center>
+          <div flex items-center gap-2>
             <n-input-number v-model:value="pyC" placeholder="Hypotenuse c" style="max-width: 160px;" />
             <span op-60>² − </span>
             <n-input-number v-model:value="pyKnown" placeholder="Known side" style="max-width: 160px;" />
@@ -164,7 +167,6 @@ const pyMissing = computed(() => {
           </div>
         </div>
       </c-card>
-
     </div>
   </div>
 </template>
