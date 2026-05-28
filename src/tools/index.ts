@@ -93,6 +93,7 @@ import { tool as ohmsLawCalculator } from './ohms-law-calculator';
 import { tool as powerFactorCalculator } from './power-factor-calculator';
 import { tool as trigonometryCalculator } from './trigonometry-calculator';
 import { tool as electricalPowerCalculator } from './electrical-power-calculator';
+import { tool as frequencyWavelengthCalculator } from './frequency-wavelength-calculator';
 
 export const toolsByCategory: ToolCategory[] = [
   {
@@ -198,7 +199,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Ham Radio',
-    components: [hamRadioCalculators],
+    components: [hamRadioCalculators, frequencyWavelengthCalculator],
   },
 ];
 
