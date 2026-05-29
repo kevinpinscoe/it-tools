@@ -97,13 +97,23 @@ It will create a directory in `src/tools` with the correct files, and the import
 Pre-built images are published to GHCR:
 
 ```sh
-docker pull ghcr.io/kevinpinscoe/eng-tools:latest
-docker run -p 8080:80 ghcr.io/kevinpinscoe/eng-tools:latest
+docker pull ghcr.io/kevinpinscoe/eng-tools:nightly
+docker run -p 8080:80 ghcr.io/kevinpinscoe/eng-tools:nightly
 ```
 
 The container listens on **port 80**. Map it to any host port you like (`-p <host>:80`).
 
-Available tags: `latest` (nightly), semver releases (`v1.2.3`, `1.2`, `1`).
+Available tags: `nightly` (built from `main` when there are new commits), semver releases (`v1.2.3`).
+
+For reproducible deployments, pin to the image digest rather than the floating `:nightly` tag:
+
+```sh
+# Get the current digest
+docker inspect --format='{{index .RepoDigests 0}}' ghcr.io/kevinpinscoe/eng-tools:nightly
+
+# Pull and run by digest
+docker run -p 8080:80 ghcr.io/kevinpinscoe/eng-tools@sha256:<digest>
+```
 
 ## Repository Layout
 
