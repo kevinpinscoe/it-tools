@@ -19,7 +19,7 @@ const styleStore = useStyleStore();
 const version = config.app.version;
 const commitSha = config.app.lastCommitSha.slice(0, 7);
 const commitDate = config.app.lastCommitDate
-  ? new Date(config.app.lastCommitDate).toISOString().slice(0, 16).replace('T', ' ') + ' UTC'
+  ? `${new Date(config.app.lastCommitDate).toISOString().slice(0, 16).replace('T', ' ')} UTC`
   : '';
 
 const { tracker } = useTracker();
