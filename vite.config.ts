@@ -19,6 +19,15 @@ import { configDefaults } from 'vitest/config';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
+function gitExec(format: string): string {
+  try {
+    return execSync(`git log -1 --format="${format}"`).toString().trim();
+  }
+  catch {
+    return '';
+  }
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -101,8 +110,8 @@ export default defineConfig({
     {
       name: 'build-info',
       generateBundle() {
-        const commitSha = execSync('git log -1 --format="%H"').toString().trim();
-        const commitDate = execSync('git log -1 --format="%ci"').toString().trim();
+        const commitSha = gitExec('%H');
+        const commitDate = gitExec('%ci');
         this.emitFile({
           type: 'asset',
           fileName: 'build-info.json',
@@ -124,9 +133,7 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
-    'import.meta.env.LAST_COMMIT_DATE': JSON.stringify(
-      execSync('git log -1 --format="%ci"').toString().trim(),
-    ),
+    'import.meta.env.LAST_COMMIT_DATE': JSON.stringify(gitExec('%ci')),
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
